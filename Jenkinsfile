@@ -8,12 +8,13 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'npm install'
+                bat 'npm run build'
             }
         }
        
-       stage('Deliver') {
+       stage('dockerize') {
                             steps {
-                               bat 'npm run build'
+                               bat 'docker build -t neethucleetus/react-to-aws:latest .'
                             }
                         }
    }
